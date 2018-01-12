@@ -1,16 +1,23 @@
-<template>
-    <div id="app">
-        {{msg}}
-    </div>
-</template>
-
 <script>
+    import Clock from './components/Clock.vue';
+
     export default {
-        name: 'app',
-        data() {
-            return {
-                msg: 'Welcome to Your Vue.js App',
-            }
+        functional: true,
+
+        render(createElement) {
+            return createElement('div', {
+                attrs: {
+                    id: 'app',
+                },
+            }, [
+                createElement('main', {
+                    'class': 'App',
+                }, [
+                    createElement(Clock, {
+                        'class': 'App__clock',
+                    }),
+                ]),
+            ]);
         },
     }
 </script>

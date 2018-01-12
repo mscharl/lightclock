@@ -1,38 +1,27 @@
-#app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2C3E50;
-    margin-top: 60px;
+:root {
+    font-size: 5vmin;
 }
 
 
 
 
-h1, h2 {
-    font-weight: normal;
-}
+html, body {
+    width: 100vw;
+    height: 100vh;
 
-
-
-
-ul {
-    list-style-type: none;
+    margin: 0;
     padding: 0;
 }
 
 
 
 
-li {
-    display: inline-block;
-    margin: 0 10px;
+* {
+    box-sizing: border-box;
 }
 
 
 
 
-a {
-    color: #42B983;
-}
+@import "components/App";
+@import "components/Clock";
