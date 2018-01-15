@@ -1,0 +1,1 @@
+export const SET_CURRENT_TIME = 'set_current_time';
