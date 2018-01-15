@@ -1,4 +1,5 @@
 .Clock {
+    position: relative;
     border-radius: 100%;
     overflow: hidden;
 
@@ -23,5 +24,32 @@
         &--night {
             background-color: darkgray;
         }
+    }
+
+    &__hands {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    &__hand {
+        position: absolute;
+        top: 50%;
+        left: 0;
+
+        width: 50%;
+
+        transform-origin: right center;
+
+        transition: transform .4s ease-out;
+    }
+
+    &__location {
+        position: absolute;
+        transform: translateY(-50%);
+
+        transition: transform .4s ease-out;
     }
 }
