@@ -1,5 +1,3 @@
-import moment from 'moment';
-
 import * as actionTypes from './types/actions'
 import * as mutationTypes from './types/mutations'
 
@@ -9,7 +7,10 @@ export default {
     [actionTypes.CONTINUOUSLY_SET_CURRENT_TIME](context) {
         const setTimeRequest = () => window.requestAnimationFrame(setTime);
         const setTime        = () => {
-            context.commit(mutationTypes.SET_CURRENT_TIME, moment().toObject());
+            const now     = new Date();
+            const utcDate = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours(), now.getUTCMinutes());
+
+            context.commit(mutationTypes.SET_CURRENT_TIME, utcDate);
             CONTINUOUS_TIME_SETTER_INTERVAL = window.setTimeout(setTimeRequest, 5000);
         };
 

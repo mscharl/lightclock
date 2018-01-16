@@ -5,11 +5,7 @@
             <div class="Clock__hemisphere Clock__hemisphere--night"></div>
         </aside>
         <section class="Clock__hands">
-            <div class="Clock__hand" :style="locationRotation()">
-                <div class="Clock__location" :style="locationBalance()">
-                    {{formattedTime()}}
-                </div>
-            </div>
+            <location v-for="location in locations" :location="location" :key="location.name"></location>
         </section>
     </section>
 </template>
@@ -20,41 +16,20 @@
 
     import * as getterTypes from '../store/types/getters'
 
+    import Location from './Location.vue';
+
     export default {
         name: 'Clock',
+
+        components: {
+            Location,
+        },
 
         computed: {
             ...mapGetters({
                 currentTime: getterTypes.CURRENT_TIME,
+                locations  : getterTypes.LOCATIONS,
             }),
-        },
-
-        methods: {
-            rotation() {
-                const midnight       = moment().hours(0).minutes(0).seconds(0);
-                const now            = moment(this.currentTime);
-                const secondsPerDay  = 24 * 60 * 60;
-                const secondsPassed  = now.diff(midnight, 'seconds');
-                const rotation       = secondsPassed / secondsPerDay * 360;
-                const rotationOffset = -90;
-
-
-                return Math.floor(rotation + rotationOffset);
-            },
-            locationRotation() {
-                return {
-                    transform: `rotate(${this.rotation()}deg)`,
-                };
-            },
-            locationBalance() {
-                return {
-                    transform: `rotate(${-this.rotation()}deg)`,
-                };
-            },
-
-            formattedTime() {
-                return moment(this.currentTime).format('HH:mm')
-            },
         },
     }
 </script>

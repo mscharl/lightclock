@@ -1,0 +1,19 @@
+
+.Location {
+    position: absolute;
+    transform: translateY(-50%);
+
+    transition: transform .4s ease-out;
+
+    &__wrapper {
+        position: absolute;
+        top: 50%;
+        left: 0;
+
+        width: 50%;
+
+        transform-origin: right center;
+
+        transition: transform .4s ease-out;
+    }
+}
