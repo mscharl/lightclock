@@ -1,5 +1,5 @@
-var path    = require('path')
-var webpack = require('webpack')
+var path    = require('path');
+var webpack = require('webpack');
 
 module.exports = {
     entry      : ['./src/scripts/main.js', './src/scss/main.scss'],
@@ -46,6 +46,10 @@ module.exports = {
                 loader : 'babel-loader',
                 exclude: /node_modules/,
             }, {
+                test   : /\.ts$/,
+                loaders: ['babel-loader', 'ts-loader'],
+                exclude: /node_modules/,
+            }, {
                 test   : /\.(png|jpg|gif|svg)$/,
                 loader : 'file-loader',
                 options: {
@@ -58,7 +62,7 @@ module.exports = {
         alias     : {
             'vue$': 'vue/dist/vue.esm.js',
         },
-        extensions: ['*', '.js', '.vue', '.json'],
+        extensions: ['*', '.js', '.ts', '.vue', '.json'],
     },
     devServer  : {
         historyApiFallback: true,
@@ -69,7 +73,11 @@ module.exports = {
         hints: false,
     },
     devtool    : '#eval-source-map',
-}
+
+    plugins: [
+        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    ],
+};
 
 if(process.env.NODE_ENV === 'production') {
     module.exports.devtool = '#source-map'
