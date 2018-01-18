@@ -9,7 +9,7 @@ const api = axios.create({
 });
 
 // A Instance independent promise cache to avoid loading the same data multiple times
-const RUNNING_CALLS: WeakMap<string, Promise<SunriseSunset.Times>> = new WeakMap();
+const RUNNING_CALLS: Map<string, Promise<SunriseSunset.Times>> = new Map();
 
 
 /**
@@ -83,8 +83,8 @@ export default class SunCalculator {
 
         // Create the params object
         const params: SunriseSunset.APIRequestParams = {
-            _lat,
-            _lng,
+            lat: _lat,
+            lng: _lng,
             date: `${_year}-${_month}-${_date}`,
             formatted: 0
         };
