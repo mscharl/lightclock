@@ -4,6 +4,9 @@
             <div class="Clock__hemisphere Clock__hemisphere--day"></div>
             <div class="Clock__hemisphere Clock__hemisphere--night"></div>
         </aside>
+
+        <div class="Clock__shadow"></div>
+
         <section class="Clock__hands">
             <location v-for="location in locations" :location="location" :key="location.name"></location>
         </section>

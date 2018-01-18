@@ -3,6 +3,18 @@
     border-radius: 100%;
     overflow: hidden;
 
+    &__shadow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        border-radius: 100%;
+
+        box-shadow: inset .375rem .375rem .625rem rgba(black, .6), inset 0 0 .375rem rgba(black, .4);
+    }
+
     &__background {
         display: flex;
         flex-direction: column;
